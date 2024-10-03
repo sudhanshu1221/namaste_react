@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namaste React</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>hello from top</h1>
+    <div id="root">
+      <!-- 1--Plane HTML Hello World
+        <h1>Hello World</h1>
+    -->
+      <!--2-- Writing Hello World using JS Below-->
+      <!-- <script> 
+
+         const heading=document.createElement('h1');
+         heading.innerHTML='Hello World from JS';
+        //Grabbing the root div
+        const root=document.getElementById('root');
+        root.appendChild(heading);
+
+        </script> -->
+      <!-- 3 Getting react power using cdn links below
+       Core react codes are written in the first Link
+       DOM properties are obtained using second link
+      -->
+      <h1>Hi guys hello</h1>
+    </div>
+    <!-- 3-- Writing Hello World using React-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="App.js"></script>
+    <h1>Hello from bottom</h1>
+  </body>
+</html>
