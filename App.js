@@ -1,49 +1,62 @@
-//First, you created a React element representing an <h1> tag with some text.
-// Next, you created a root where React will render your component.
-// Finally, you rendered that element into the DOM, so the browser displays "Hello World from React" inside an <h1> tag.
-//CREATEELEMENT is js object
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading", xyz: "abc" },
-//   "Hello World from React"
-// );
-//crate an structure like this
+//import from node_modules
+import React from "react";
+import ReactDOM from "react-dom/client";
 /*
-<div id='parent'> 
-<div id='child'>
-<h1> I am an h1 tag</h1>
-</div>
-</div>
-ReactElement is just and js object it is converted to HTML during the render 
-*/
-//type,attributes(props),child
-//multiple childs can be given as an array to last parameter
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
+//this below line creates a react element using react fundamentals
+//js object
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
 
-  [
-    React.createElement("div", { id: "child" }, [
-      React.createElement("h1", {}, "I am an h1 tag."),
-      React.createElement("h2", {}, "I am an h2 tag."),
-    ]),
-    React.createElement("div", { id: "child" }, [
-      React.createElement("h1", {}, "I am an h1 tag."),
-      React.createElement("h2", {}, "I am an h2 tag."),
-    ]),
-  ]
-);
-//heading is an js object
-// console.log(parent);
+//JSX-html or xml like syntax
+//this below also creates a react element but by jsx
+//js object
+//this below syntax is not understandable by jsEngine or ES6
+//JSX code is transpilled before it reaches the JS(this is done by parcel which have babel dependency which converts it )
+//logic for below line
+//JSX--Babel converts it into React.createElement-React Element(JS object)--rendered as HTML
+//for multiline jsx use()*/
+
+//React ELement
+// const jsxHeading = <h1>Hello from jsx side</h1>;
+//components
+//class based--OLD
+//functional based--NEW
+//REACT FUNCTIONAL COMPONENT(it is nothing just a js fn which returns jsx i.e react element) (function name should be capitals)
+const Title = () => {
+  return <h1> Hi from title of page</h1>;
+};
+//this below is example of component composition
+const title = <h1 className="title"> Hello from title</h1>;
+const Heading = () => {
+  return (
+    <div id="container">
+      {title}
+      <Title></Title>
+      <Title />
+      {Title()}
+      <h1>Hello from component</h1>
+    </div>
+  );
+};
+//call a component using <Component/>
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//converts the js object heading into  h1 tag and puts inside root
-root.render(parent);
-//above code becomes very untidy and complex to write
-//we can solve this by writing react in jsx
 
-//render above convert js object to html and puts inside root div if already something exists in root div then it is replaced
+root.render(<Heading />);
+// //we can put component inside react element or vica versa or any combination
+//inside jsx just {write any javascript here}
 
-//react is a library it can work independently on any component
-//like above done on root or header
-//it is just a js object written at low level
-//framework gives everything
+// //Below is eg of component inside the react element or jsx
+// const Heading = () => {
+//   return <h1> hello from Heading</h1>;
+// };
+
+// const title = (
+//   <>
+//     <h1> Hello from title</h1>
+//     <Heading />
+//   </>
+// );
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(title);
+
+// //to use react element or jsx inside component use curly braces as react element is just an variable like title above
