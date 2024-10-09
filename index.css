@@ -1,3 +1,44 @@
-#heading {
-  color: brown;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.logo {
+  width: 150px;
+}
+
+.nav-items > ul {
+  font-size: 24px;
+  display: flex;
+  list-style-type: none;
+}
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+.search {
+  padding: 10px;
+}
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.res-card {
+  padding: 5px;
+  width: 200px;
+  height: auto;
+  border: 1px solid black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow */
+  margin: 10px;
+}
+.res-card:hover {
+  transform: translateY(-10px); /* Moves the card upwards */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increases shadow for 3D effect */
+}
+
+.res-card-logo {
+  width: 100%;
 }
