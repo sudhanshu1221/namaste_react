@@ -1,21 +1,3 @@
-//import from node_modules
-import React from "react";
-import ReactDOM from "react-dom/client";
-//low level design of food ordering app
-/*
-Header
---Logo 
---Nav links
-Body
---Search container
---Restaurent  container
-----Restaurent cards
-Footer
---copyright 
---links
---Address
---Contact
-*/
 const resDataList = [
   {
     info: {
@@ -790,72 +772,5 @@ const resDataList = [
     },
   },
 ];
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src={
-            "https://i.pinimg.com/736x/9a/fa/a4/9afaa4a58b2c5e73cdbd7d66c0b2c220.jpg"
-          }
-          width="300"
-          height="200"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li> Home </li>
-          <li> About us</li>
-          <li> Contact us</li>
-          <li> Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-const RestaurentCard = (props) => {
-  const { resData } = props;
-  const { name, cuisines, avgRating } = resData?.info;
-  return (
-    //giving inline css
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img
-        className="res-card-logo"
-        src="https://img.freepik.com/premium-vector/indian-biryani-rice-vector-illustration-logo-served-clay-pot_499212-948.jpg?semt=ais_hybrid"
-      />
-      <h3> {name}</h3>
-      <h5> {cuisines}</h5>
-      <h5> {avgRating}</h5>
-      <h5> {resData.info.sla.deliveryTime + " minutes"}</h5>
-    </div>
-  );
-};
-//not using keys(not acceptable)<<<index as a key<<<<<<<<unique id(best practise)
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search"> Search</div>
-      <div className="res-container">
-        {resDataList.map((restaurent) => (
-          <RestaurentCard key={restaurent.info.id} resData={restaurent} />
-        ))}
-      </div>
-    </div>
-  );
-};
-const Footer = () => {
-  return <div></div>;
-};
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  );
-};
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppLayout />);
+export default resDataList;
