@@ -45,3 +45,27 @@
 .filter-btn {
   margin: 5px;
 }
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.shimmer-element {
+  padding: 5px;
+  width: 200px;
+  height: 200;
+  border: 1px solid black;
+  margin: 10px;
+  background-color: rgb(248, 248, 248);
+}
+.login-btn {
+  margin-top: 12px;
+  border: 1px solid black;
+  padding-top: 10px;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+}
+.filter {
+  display: flex;
+}
