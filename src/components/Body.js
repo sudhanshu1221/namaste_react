@@ -1,13 +1,13 @@
 import RestaurentCard from "./RestaurentCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 //not using keys(not acceptable)<<<index as a key<<<<<<<<unique id(best practise)
 const Body = () => {
   //using state react hook normal utility js fn
   //this listOfRestaurent is normal variable in js
   const [listOfRestaurent, setlistOfRestaurent] = useState([]);
-  const [filterRestaurent, setfilterRestaurent] = useState([]);
-  const [searchText, setsearchText] = useState("");
+
   //using normal js variable not changing the ui
   //   let listOfRestaurent = [
   //     {
@@ -57,7 +57,7 @@ const Body = () => {
   //     },
   //   ];
   //useEffect
-  // console.log("Body called");
+
   useEffect(() => {
     // debugger;
     // console.log("useEffect is being executed");
@@ -73,40 +73,15 @@ const Body = () => {
     const currData =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    // console.log(json);
+
     setlistOfRestaurent(currData);
-    setfilterRestaurent(currData);
   };
   //conditional rendering
-  if (listOfRestaurent.length === 0) {
-    return <Shimmer />;
-  }
-  return (
+  return listOfRestaurent.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
-        <div className="search">
-          <input
-            type="text"
-            className="search-box"
-            value={searchText}
-            onChange={(e) => {
-              setsearchText(e.target.value);
-            }}
-          />
-
-          <button
-            onClick={() => {
-              const filteredRest = listOfRestaurent.filter((res) => {
-                return res.info.name
-                  .toLowerCase()
-                  .includes(searchText.toLowerCase());
-              });
-              setfilterRestaurent(filteredRest);
-            }}
-          >
-            Search
-          </button>
-        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -124,8 +99,13 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {filterRestaurent.map((restaurent) => (
-          <RestaurentCard key={restaurent.info.id} resData={restaurent} />
+        {listOfRestaurent.map((restaurent) => (
+          <Link
+            key={restaurent?.info?.id}
+            to={"/restaurents/" + restaurent.info.id}
+          >
+            <RestaurentCard resData={restaurent} />
+          </Link>
         ))}
       </div>
     </div>
