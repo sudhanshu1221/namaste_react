@@ -5,39 +5,38 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      count2: 0,
+      userInfo: {
+        login: "dummy",
+        id: "null",
+      },
     };
-    console.log(this.props.name + "child constructor called");
+    console.log(this.state.login + "child constructor called");
   }
-  componentDidMount() {
-    console.log(this.props.name + "child  did mount is called");
+  async componentDidMount() {
+    console.log(this.state.login + "child  did mount is called");
     //API call is done here
+    const data = await fetch("https://api.github.com/users/sudhanshu1221");
+    const dataJSON = await data.json();
+    this.setState({
+      userInfo: dataJSON,
+    });
+    // console.log(dataJSON);
+  }
+  componentDidUpdate() {
+    console.log("component did update called");
+  }
+  componentWillUnmount() {
+    console.log("component will unmount called");
   }
   render() {
-    console.log(this.props.name + "child render called");
-    const { name, location, contact } = this.props;
-    const { count } = this.state;
+    const { login, avatar_url, id } = this.state.userInfo;
+    console.log(login + "child render called");
+    // debugger;
     return (
       <div className="user-card">
-        <h1> Count:{this.state.count}</h1>
-        <button
-          onClick={() => {
-            //never update state variable directly it doesnt change the ui directly
-            // this.state.count = this.state.count + 1;
-            //only the count will be updated and rest will be untouched
-            this.setState({
-              count: count + 1,
-            });
-            // console.log(this.state);
-          }}
-        >
-          Increment no
-        </button>
-        {/* <h2> count2:{count2}</h2> */}
-        <h2> Name:{name}</h2>
-        <h3> Location:{location}</h3>
-        <h4> Contact:{contact}</h4>
+        <img src={avatar_url} sizes="small" />
+        <h2> Name:{login}</h2>
+        <h4> id:{id}</h4>
       </div>
     );
   }
